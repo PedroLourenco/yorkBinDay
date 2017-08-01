@@ -12,8 +12,8 @@ import {
 } from 'react-navigation'
 
 import AboutScreen          from './Screens/About/About'
-import PostalCodeScreen           from './Screens/PostalCode/PostalCode'
-//import ColectionDates       from './Screens/ColectionDates/ColectionDates'
+import PostalCodeScreen     from './Screens/PostalCode/PostalCode'
+import AddressScreen        from './Screens/Address/Address'
 import SlideMenu            from './Components/SlideMenu'
 
 const MainScreen = DrawerNavigator(
@@ -21,12 +21,13 @@ const MainScreen = DrawerNavigator(
     PostalCode: {
       path: '/PostalCode',
       screen: PostalCodeScreen
-    },
+  },
     About: {
       path: '/About',
       screen: AboutScreen
     }
   },
+
   {
     contentComponent: SlideMenu,
     drawerPosition: 'left',
@@ -44,7 +45,11 @@ const YorkBinDayRoutes = {
   MainScreen: {
     name: 'PostalCode',
     screen: PostalCodeScreen
-  }
+ },
+  Address: {
+    name: "Address",
+    screen:AddressScreen
+ }
 }
 
 const AppNavigator = StackNavigator(

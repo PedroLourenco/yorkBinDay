@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     color: '#000000',
     marginLeft: 15,
     fontSize: 18,
-    //fontFamily: 'Raleway-SemiBold'
+    fontWeight: 'bold',
   }
 })
 

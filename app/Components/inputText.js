@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, TextInput, View, StyleSheet } from 'react-native';
 
-class inputText extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
-  }
-
-  render() {
-    return (
-        <TextInput
-          style={styles.textInput}
-          placeholder="Postal Code"
-          maxLength={6}
-          onChangeText={(text) => this.setState({text})}
-        />
-    );
-  }
-}
+const inputText = (props) => {
+  return (
+    <View>
+      <TextInput
+        style={styles.textInput}
+        autoCapitalize="none"
+        autoCorrect={false}
+        maxLength={8}
+        {...props}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
     textInput: {
