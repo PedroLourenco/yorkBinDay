@@ -11,11 +11,13 @@ import {
   DrawerNavigator
 } from 'react-navigation'
 
-import AboutScreen          from './Screens/About/About'
-import PostalCodeScreen     from './Screens/PostalCode/PostalCode'
-import AddressScreen        from './Screens/Address/Address'
-import SlideMenu            from './Components/SlideMenu'
+import AboutScreen            from './Screens/About/About'
+import PostalCodeScreen       from './Screens/PostalCode/PostalCode'
+import AddressScreen          from './Screens/Address/Address'
+import CollectionDatesScreen  from './Screens/CollectionDates/CollectionDates'
+import SlideMenu              from './Components/SlideMenu'
 
+// Drawer Menu Options
 const MainScreen = DrawerNavigator(
   {
     PostalCode: {
@@ -41,6 +43,7 @@ const MainScreen = DrawerNavigator(
   }
 )
 
+// App Screens
 const YorkBinDayRoutes = {
   MainScreen: {
     name: 'PostalCode',
@@ -48,8 +51,12 @@ const YorkBinDayRoutes = {
  },
   Address: {
     name: "Address",
-    screen:AddressScreen
- }
+    screen: AddressScreen
+ },
+  CollectionDates: {
+    name: "CollectionDates",
+    screen: CollectionDatesScreen
+  }
 }
 
 const AppNavigator = StackNavigator(

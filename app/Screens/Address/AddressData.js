@@ -1,37 +1,48 @@
 import React, { Component } from 'react';
-import styles from './styles';
+import { List, ListItem } from "react-native-elements";
 
 import {
     Text,
     View,
-    StyleSheet,
-    FlatList,
-    Platform,
-    Dimensions
+    FlatList
 } from 'react-native';
 
-const width = Dimensions.get('window').width;
-
 class AddressData extends Component {
-
-    renderFlatListItem(item) {
-        return (
-            <View style={{flexDirection: 'row', height: 52, alignItems: 'center', marginLeft: 10, marginRight: 10}}>
-            <Text style={{fontSize: 16}}>{item.ShortAddress}</Text>
-            </View>
-        )
-    }
-
+  constructor(props) {
+    super(props)
+}
+  renderSeparator = () => {
+      return (
+        <View
+          style={{
+            height: 1,
+            width: "100%",
+            backgroundColor: "#CED0CE"
+          }}
+        />
+      );
+    };
     render() {
+      const { navigation } = this.props
+
         return (
-            <FlatList
-            ItemSeparatorComponent = {() => (
-                <View style={[{height: 1, backgroundColor: '#d3d3d3'}, {marginLeft: 0}]} />
-            )}
-            data = {this.props.data}
-            keyExtractor={item => item.ShortAddress}
-            renderItem={({item}) => this.renderFlatListItem(item)}
+          <List containerStyle={{ flex: 1, borderTopWidth: 0, borderBottomWidth: 0 }}>
+             <FlatList
+              data={this.props.data}
+              renderItem={({ item }) => (
+                <ListItem
+                  titleNumberOfLines={3}
+                  title={item.ShortAddress}
+                  subtitle={item.Postcode}
+                  containerStyle={{ borderBottomWidth: 0 }}
+
+                  onPress={ () => navigation.navigate('CollectionDates', { urpn: item.Uprn })}
+                />
+              )}
+              keyExtractor={item => item.ShortAddress}
+              ItemSeparatorComponent={this.renderSeparator}
             />
+          </List>
         );
     }
 }

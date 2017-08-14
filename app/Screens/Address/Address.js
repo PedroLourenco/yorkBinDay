@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import AddressData from './AddressData';
 import Api from '../../Utils/api';
+import StatusBar from '../../Components/StatusBar';
 
 import {
     Text,
     View,
-    StatusBar,
     StyleSheet,
     TouchableHighlight,
     Image,
@@ -36,10 +36,7 @@ class AddressScreen extends Component {
                     isLoading: false,
                     data: data
                 })
-                console.log(data.length);
-                console.log(data);
             }).catch(() => {
-                console.log("error");
                 this.setState({
                     isLoading: false,
                     data: []
@@ -56,39 +53,30 @@ class AddressScreen extends Component {
         if (this.state.isLoading) {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff' }}>
-                        <View style={ styles.statusBar }>
-                            <Text style={ styles.headerTxt }>Choose your Address</Text>
+                  <StatusBar
+                    title = "Choose your Address"
+                    leftButton = { require('../../../assets/images/btn-back.png') }
+                    onpress = { () => navigation.goBack() }
+                  />
 
-                        <TouchableHighlight
-                            style={ styles.btn }
-                            onPress={ () => navigation.goBack() }>
-                        <Image
-                            style={ styles.btnLeft }
-                            source={ require('../../../assets/images/btn-back-black.png') } />
-                        </TouchableHighlight>
-                        <ActivityIndicator
-                            animating={ this.state.isLoading }
-                            style={ styles.centering }
-                            size="large" />
-                    </View>
+                  <ActivityIndicator
+                      animating={ this.state.isLoading }
+                      style={ styles.centering }
+                      size="large"/>
                 </View>
             );
         } else {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff' }}>
-                    <View style={ styles.statusBar }>
-                        <Text style={ styles.headerTxt }>Choose your Address</Text>
-
-                        <TouchableHighlight
-                            style={ styles.btn }
-                            onPress={ () => navigation.goBack() }>
-                            <Image
-                                style={ styles.btnLeft }
-                                source={ require('../../../assets/images/btn-back-black.png') } />
-                        </TouchableHighlight>
-
-                    </View>
-                    <AddressData data = {this.state.data}/>
+                <StatusBar
+                  title = "Choose your Address"
+                  leftButton = {require('../../../assets/images/btn-back.png')}
+                  onpress = { () => navigation.goBack() }
+                />
+                    <AddressData
+                      data = {this.state.data}
+                      navigation = {navigation}
+                    />
                 </View>
             );
         }

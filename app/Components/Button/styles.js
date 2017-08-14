@@ -6,7 +6,7 @@ export default StyleSheet.create({
     height: 40,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: "#007AFF"
+    backgroundColor: '#00336b'
   },
   buttonText: {
     color: "#FFFFFF",

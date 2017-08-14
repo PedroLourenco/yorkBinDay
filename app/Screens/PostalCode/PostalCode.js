@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import HomeHeader from '../../Components/HomeHeader';
 import InputText from '../../Components/inputText';
 import Button from '../../Components/Button/Button';

@@ -25,7 +25,7 @@ class HomeHeader extends Component {
           onPress={ () => navigation.navigate('DrawerOpen') }>
           <Image
             style={ styles.btnLeft }
-            source={ require('../../assets/images/btn-menu.png') } />
+            source={ require('../../assets/images/menu.png') } />
         </TouchableHighlight>
         <ScalableText style={ styles.title }>{ title }</ScalableText>
       </View>
@@ -35,7 +35,7 @@ class HomeHeader extends Component {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#e7e7e7",
+    backgroundColor: "#00336b",
     paddingTop: Platform.OS === 'ios' ? 20 : 0,
     overflow: 'hidden',
     flexDirection: 'row',
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     width: 60
   },
   title: {
-    color: '#000000',
+    color: '#fff',
     marginLeft: 15,
     fontSize: 18,
     fontWeight: 'bold',

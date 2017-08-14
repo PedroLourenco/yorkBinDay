@@ -1,4 +1,3 @@
-/* @flow */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
@@ -80,12 +79,12 @@ const styles = StyleSheet.create({
   },
   btnTxt: {
     paddingLeft: 20,
-    color: "#f94057",
+    color: "#000",
     fontSize: 16,
     lineHeight: 17,
   },
   btnTxtActive: {
-    color: '#f94057'
+    color: "#000"
   }
 })
 
