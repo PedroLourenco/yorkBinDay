@@ -4,6 +4,7 @@ import styles from './styles';
 import AddressData from './AddressData';
 import Api from '../../Utils/api';
 import StatusBar from '../../Components/StatusBar';
+import { List, ListItem } from "react-native-elements";
 
 import {
     Text,
@@ -18,6 +19,8 @@ class AddressScreen extends Component {
     constructor(props) {
         super(props)
 
+        console.log(props);
+
         this.state = {
             data: [],
             isLoading: true
@@ -30,7 +33,7 @@ class AddressScreen extends Component {
 
     fetchData() {
         return new Promise((resolve, reject) => {
-            Api.getPropertiesForPostCode2(this.props.navigation.state.params.code)
+            Api.getPropertiesForPostCode(this.props.navigation.state.params.code)
             .then((data) => {
                 this.setState({
                     isLoading: false,
@@ -45,41 +48,43 @@ class AddressScreen extends Component {
         });
     };
 
-    // Render the lodingwheel and the list when we get the data
+    // Render the loadingwheel and the list when we get the data
     // TODO Handle the error message or no data
     render() {
-        const { navigation } = this.props
 
-        if (this.state.isLoading) {
-            return (
-                <View style={{ flex: 1, backgroundColor: '#fff' }}>
-                  <StatusBar
-                    title = "Choose your Address"
-                    leftButton = { require('../../../assets/images/btn-back.png') }
-                    onpress = { () => navigation.goBack() }
-                  />
+      const {navigation} = this.props
 
-                  <ActivityIndicator
-                      animating={ this.state.isLoading }
-                      style={ styles.centering }
-                      size="large"/>
-                </View>
-            );
-        } else {
-            return (
-                <View style={{ flex: 1, backgroundColor: '#fff' }}>
-                <StatusBar
-                  title = "Choose your Address"
-                  leftButton = {require('../../../assets/images/btn-back.png')}
-                  onpress = { () => navigation.goBack() }
-                />
-                    <AddressData
-                      data = {this.state.data}
-                      navigation = {navigation}
-                    />
-                </View>
-            );
-        }
+      if (this.state.isLoading) {
+        return (
+          <View style={{flex: 1, backgroundColor: '#fff'}}>
+            <StatusBar
+              title="Chosse Address"
+              leftButton={require('../../../assets/images/btn_back.png')}
+              onpress={() => navigation.goBack()}
+            />
+
+            <ActivityIndicator
+              animating={this.state.isLoading}
+              style={styles.centering}
+              size="large"/>
+          </View>
+        );
+      } else {
+        return (
+          <View style={{flex: 1, backgroundColor: '#fff'}}>
+            <StatusBar
+              title="Chosse Address"
+              leftButton={require('../../../assets/images/btn_back.png')}
+              onpress={() => navigation.goBack()}
+            />
+
+            <AddressData
+              data = {this.state.data}
+              navigation = {navigation}
+            />
+          </View>
+        );
+      }
     }
 }
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {TextInput, View, StyleSheet } from 'react-native';
+import {TextInput, View, StyleSheet,TouchableWithoutFeedback } from 'react-native';
+
+const dismissKeyboard = require('dismissKeyboard');
 
 const inputText = (props) => {
   return (
-    <View>
       <TextInput
         style={styles.textInput}
         autoCapitalize="none"
@@ -11,7 +12,7 @@ const inputText = (props) => {
         maxLength={8}
         {...props}
       />
-    </View>
+
   );
 };
 

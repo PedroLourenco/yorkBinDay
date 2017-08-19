@@ -22,9 +22,9 @@ class SlideMenu extends Component {
   render() {
     function icon(index) {
       if (index == 0) {
-        return <Image source={ require('../../assets/images/icon-standings.png') } style={ styles.btnIcon } />
+        return <Image source={ require('../../assets/images/icon_standings.png') } style={ styles.btnIcon } />
       } else if (index == 1) {
-        return <Image source={ require('../../assets/images/icon-calendar.png') } style={ styles.btnIcon } />
+        return <Image source={ require('../../assets/images/icon_calendar.png') } style={ styles.btnIcon } />
       }
     }
 
@@ -32,7 +32,7 @@ class SlideMenu extends Component {
       <View style={ styles.content }>
         <Image
           style={ styles.menuImg }
-          source={ require('../../assets/images/City-of-York-Council-logo.jpg') }/>
+          source={ require('../../assets/images/City_of_York_Council_logo.jpg') }/>
         {this.props.navigation.state.routes.map((route, index) => (
           <TouchableHighlight
             onPress={ () => this.props.navigation.navigate(route.routeName) }

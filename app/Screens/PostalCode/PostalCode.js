@@ -9,7 +9,8 @@ import {
   StatusBar,
   Text,
   StyleSheet,
-  Alert
+  Alert,
+  Keyboard
 } from 'react-native'
 
 class PostalCode extends Component {
@@ -17,7 +18,15 @@ class PostalCode extends Component {
     super(props)
 
     this.state = {
-      code: ''
+      code: null
+    }
+  }
+
+  handleTextInout = (text) => {
+    if (this.state.code) {
+      return (
+        this.props.navigation.navigate('Address', {code: this.state.code})
+      )
     }
   }
 
@@ -44,7 +53,7 @@ class PostalCode extends Component {
                     <View style={{top: 40}}>
                         <Button
                             text="Get Address"
-                            onPress={ () => this.props.navigation.navigate('Address', { code: this.state.code })}
+                            onPress={ this.handleTextInout}
                           />
                     </View>
                 </View>

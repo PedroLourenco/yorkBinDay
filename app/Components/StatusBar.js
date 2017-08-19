@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import {TouchableHighlight, Text, View, StyleSheet, Image } from 'react-native';
+import {TouchableHighlight, Text, View, StyleSheet, Image, Platform} from 'react-native';
 import PropTypes from 'prop-types';
 
 const StatusBar = (props) => {
-  const {title, leftButton, onpress } = props
+  const {title, leftButton, onpress} = props
 
   return (
     <View style={styles.statusBar}>
-      <Text style={styles.headerTxt}>{title}</Text>
 
-        <TouchableHighlight
-            style={styles.btn}
-            onPress={onpress}>
-            <Image
-                style={styles.btnLeft}
-                source={leftButton}
-            />
-        </TouchableHighlight>
+      <TouchableHighlight style={styles.btn}
+        onPress={onpress}>
+          <Image
+            style={styles.btnLeft}
+            source={leftButton}
+          />
+      </TouchableHighlight>
+
+      <View style={styles.titleContainer}>
+        <Text style={styles.headerTxt}>{title}</Text>
+      </View>
     </View>
   );
 }
@@ -24,22 +26,28 @@ const StatusBar = (props) => {
 const styles = StyleSheet.create({
   statusBar: {
     backgroundColor: '#00336b',
-    height: 80
+    height: Platform.OS === 'ios' ? 80 : 60,
+    flexDirection: 'row'
+  },
+  titleContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerTxt: {
-    top: 40,
     color: '#fff',
     fontSize: 18,
-    flexDirection: 'row',
     textAlign: 'center',
-    justifyContent: 'center'
+    top: Platform.OS === 'ios' ? 10 : null,
+    paddingRight: 30
   },
   btn: {
-    height: 60,
-    width: 60,
-    marginBottom: 17,
+    width: 35,
+    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingLeft: 10,
+    top: Platform.OS === 'ios' ? 10 : null,
   },
   btnLeft: {
     height: 40,

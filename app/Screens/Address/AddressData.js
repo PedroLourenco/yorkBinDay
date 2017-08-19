@@ -10,7 +10,8 @@ import {
 class AddressData extends Component {
   constructor(props) {
     super(props)
-}
+  }
+
   renderSeparator = () => {
       return (
         <View
@@ -22,21 +23,21 @@ class AddressData extends Component {
         />
       );
     };
+
     render() {
-      const { navigation } = this.props
+      const {navigation} = this.props
 
         return (
-          <List containerStyle={{ flex: 1, borderTopWidth: 0, borderBottomWidth: 0 }}>
+          <List containerStyle={{flex: 1, borderTopWidth: 0, borderBottomWidth: 0}}>
              <FlatList
               data={this.props.data}
-              renderItem={({ item }) => (
+              renderItem={({item}) => (
                 <ListItem
                   titleNumberOfLines={3}
                   title={item.ShortAddress}
                   subtitle={item.Postcode}
-                  containerStyle={{ borderBottomWidth: 0 }}
-
-                  onPress={ () => navigation.navigate('CollectionDates', { urpn: item.Uprn })}
+                  containerStyle={{borderBottomWidth: 0}}
+                  onPress={() => navigation.navigate('CollectionDates', {urpn: item.Uprn})}
                 />
               )}
               keyExtractor={item => item.ShortAddress}
